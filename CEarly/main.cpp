@@ -90,7 +90,21 @@ void two_sixteen()
 	boolValue = false;
 	cout << boolValue << endl;
 }
-
+void two_seventeen()
+{
+	long double apple;
+	cout << "int size: " << sizeof(int) << " bytes.\n";
+	cout << "long size: " << sizeof(long) << " bytes.\n";
+	cout << "apple size: " << sizeof(apple) << " bytes.\n";
+}
+void two_eighteen()
+{
+	string month = "May";
+	int year,
+		days = 31;
+	year = 2013;
+	cout << year << days << month;
+}
 
 
 
@@ -99,7 +113,7 @@ void two_sixteen()
 
 int main()
 {
-	two_sixteen();
+	two_eighteen();
 
 	cin.get();
 
