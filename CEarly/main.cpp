@@ -122,6 +122,35 @@ void two_twenty()
 	g = e * f;
 	cout << "g=" << g;
 }
+void two_twentyone()
+{
+	/*
+	PROGRAM : main.cpp
+	Written by Thomas Mclennan
+	This program is homework
+	Last Modified 9/28/2013
+	*/
+}
+void two_twentytwo(){double a=22.0,b=927.25,c=78.50;cout << a << b << c;}
+void two_twentythree()
+{
+	double a = 22.0,
+		b = 927.25,
+		c = 78.50;
+	cout << a << b << c;
+}
+void two_twentyfour()
+{
+	cout << "\n\n";
+	cout << "  ^   ^ \n";
+	cout << "  v   v \n";
+
+	cout << "    : \n";
+	cout << "  \\UUU/ \n";
+}
+
+
+
 
 
 
@@ -132,7 +161,7 @@ void two_twenty()
 
 int main()
 {
-	two_eighteen();
+	two_twentyfour();
 
 	cin.get();
 
