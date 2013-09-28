@@ -105,6 +105,25 @@ void two_eighteen()
 	year = 2013;
 	cout << year << days << month;
 }
+void two_ninteen()
+{
+	//cout << value;
+	//int value = 100;
+}
+void two_twenty()
+{
+	double a = 18.25,
+		b = 27.58,
+		c = 40.0,
+		d = 10,
+		e,f,g;
+	e = a * c;
+	f = b * d;
+	g = e * f;
+	cout << "g=" << g;
+}
+
+
 
 
 
