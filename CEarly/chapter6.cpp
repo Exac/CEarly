@@ -196,8 +196,72 @@ bool isEven(int num){
 	return false;
 }
 //prototype
+void displayMenu();
+int getChoice();
+void showFees(string category, double rate, int months);
+void six_fourteen()
+{
+	// Constants for monthly membership rates
+	const double ADULT_RATE = 40.00,
+		SENIOR_RATE = 30.00,
+		CHILD_RATE = 20.00;
+	int choice, // Holds the user's menu choice
+		months; // Number of months being paid
+	// Set numeric output formatting
+	cout << fixed << showpoint << setprecision(2);
 
+	do
+	{ 
+		displayMenu();
+		choice = getChoice(); // Assign choice the value returned
+		// by the getChoice function
+		if (choice != 4) // If user does not want to quit, proceed
+		{
+			cout << "For how many months? ";
+			cin >> months;
 
+			switch (choice)
+			{
+			case 1: showFees("Adult", ADULT_RATE, months);
+				break;
+			case 2: showFees("Child", CHILD_RATE, months);
+				break;
+			case 3: showFees("Senior", SENIOR_RATE, months);
+			}
+		}
+	} while (choice != 4);
+}
+void displayMenu()
+{
+	system("cls"); // Clear the screen.
+	cout << "\n Health Club Membership Menu\n\n";
+	cout << "1. Standard Adult Membership\n";
+	cout << "2. Child Membership\n";
+	cout << "3. Senior Citizen Membership\n";
+}
+int getChoice()
+{
+	int choice;
+	cin >> choice;
+	while(choice < 1 || choice > 4)
+	{
+		cout << "The only valid choices are between 1 & 4. Enter choice.";
+		cin >> choice;
+	}
+	return choice;
+}
+void showFees(string memberType, double rate, int months)
+{
+	cout << endl
+		<< "Membership Type : " << memberType << " "
+		<< "Number of months: " << months << endl
+		<< "Total charges : $" << (rate * months) << endl;
+
+	// Hold the screen until the user presses the ENTER key.
+	cout << "\nPress the Enter key to return to the menu. ";
+	cin.get(); // Clear the previous \n out of the input buffer
+	cin.get(); // wait for [ENTER]
+}
 
 
 
@@ -207,5 +271,5 @@ bool isEven(int num){
 
 void chapter6()
 {
-	six_thirteen();
+	six_fourteen();
 }
