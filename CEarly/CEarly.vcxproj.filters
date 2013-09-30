@@ -53,5 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="dimensions.txt" />
+    <Text Include="weather.dat" />
   </ItemGroup>
 </Project>

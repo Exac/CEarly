@@ -222,11 +222,14 @@ void six_fourteen()
 
 			switch (choice)
 			{
-			case 1: showFees("Adult", ADULT_RATE, months);
+			case 1: 
+				showFees("Adult", ADULT_RATE, months);
 				break;
-			case 2: showFees("Child", CHILD_RATE, months);
+			case 2: 
+				showFees("Child", CHILD_RATE, months);
 				break;
-			case 3: showFees("Senior", SENIOR_RATE, months);
+			case 3: 
+				showFees("Senior", SENIOR_RATE, months);
 			}
 		}
 	} while (choice != 4);
@@ -262,6 +265,261 @@ void showFees(string memberType, double rate, int months)
 	cin.get(); // Clear the previous \n out of the input buffer
 	cin.get(); // wait for [ENTER]
 }
+//proto
+void fifteen_anotherFunction();
+void six_fifteen()
+{
+	int num = 1;
+	cout << "six_fifteen(), num = " << num << endl;
+	fifteen_anotherFunction();
+	cout << "six_fifteen(), num = " << num << endl;
+}
+void fifteen_anotherFunction()
+{
+	int num = 20;
+	cout << "fifteen_anotherFunction(), num = " << num << endl;
+}
+//proto 6-16
+void sixteen_anotherFunction();
+int num = 2;
+void six_sixteen()
+{
+	cout << "six_sixteen(), num = " << num << endl;
+	sixteen_anotherFunction();
+	cout << "six_sixteen(), num = " << num << endl;
+}
+void sixteen_anotherFunction()
+{
+	cout << "sixteen_anotherFunction(), num = " << num << endl;
+	num = 50;
+	cout << "sixteen_anotherFunction(), num = " << num << endl;
+}
+int globalNum;
+void six_seventeen()
+{
+	cout << "six_seventeen(), globalNum = " << globalNum << endl;
+}
+//prototype
+double eighteen_getBasePay(double);
+double eighteen_getOvertimePay(double);
+// Global constants
+const double PAY_RATE = 22.55; // Hourly pay rate
+const double BASE_HOURS = 40.0; // Max non-overtime hours
+const double OT_MULTIPLIER = 1.5; // Overtime multiplier
+void six_eighteen()
+{
+	double hours, // Hours worked
+		basePay, // Base pay
+		overtimePay = 0.0, // Overtime pay
+		totalPay; // Total pay
+
+	// Get the number of hours worked
+	cout << "How many hours did you work? ";
+	cin >> hours;
+
+	// Get the amount of base pay
+	basePay = eighteen_getBasePay(hours);
+
+	// Get overtime pay, if any
+	if (hours > BASE_HOURS)
+		overtimePay = eighteen_getOvertimePay(hours);
+
+	// Calculate the total pay
+	totalPay = basePay + overtimePay;
+
+	// Display the pay
+	cout << setprecision(2) << fixed << showpoint;
+	cout << "Base pay $" << setw(7) << basePay << endl;
+	cout << "Overtime pay $" << setw(7) << overtimePay << endl;
+	cout << "Total pay $" << setw(7) << totalPay << endl;
+}
+double eighteen_getBasePay(double hoursWorked)
+{
+	double basePay;
+
+	if (hoursWorked > BASE_HOURS)
+		basePay = BASE_HOURS * PAY_RATE;
+	else
+		basePay = hoursWorked * PAY_RATE;
+
+	return basePay;
+}
+double eighteen_getOvertimePay(double hoursWorked)
+{
+	double overtimePay;
+
+	if (hoursWorked > BASE_HOURS)
+	{
+		overtimePay =
+			(hoursWorked - BASE_HOURS) * PAY_RATE * OT_MULTIPLIER;
+	}
+	else
+		overtimePay = 0.0;
+
+	return overtimePay;
+}
+//prototype
+void ninteen_california();
+const int BIRDS = 500;
+void six_ninteen()
+{
+	cout << "In six_ninteen() there are " << BIRDS << " birds.\n";
+	ninteen_california();
+}
+void ninteen_california()
+{
+	const int BIRDS = 10000;
+	cout << "In ninteen_california() there are " << BIRDS << " birds.\n";
+}
+//prototype
+void twenty_showLocal();
+void six_twenty()
+{
+	twenty_showLocal();
+	twenty_showLocal();
+}
+void twenty_showLocal()
+{
+	int localNum = 5;
+	cout << localNum << endl;
+	localNum = 99;
+}
+//prototype
+void twentyone_showStatic();
+void six_twentyone()
+{
+	for (int x = 0; x <= 5; x++)
+	{
+		twentyone_showStatic();
+	}
+}
+void twentyone_showStatic()
+{
+	static int numCalls = 0;
+	cout << numCalls++ << endl;
+}
+//prototype
+void twentytwo_stars(int starsPerRow = 10, int numRows = 1);
+void six_twentytwo()
+{
+	twentytwo_stars();
+	twentytwo_stars(5);
+	twentytwo_stars(17,8);
+}
+void twentytwo_stars(int starsPerRow, int numRows)
+{
+	for(int i = 0; i < numRows; i++)
+	{
+		for(int x = 0; x < starsPerRow; x++)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+//prototype
+void twentythree_doubleNum(int &refVar);
+void six_twentythree()
+{
+	int value = 4;
+	cout << "main(), value=" << value << endl;
+	twentythree_doubleNum(value);
+	cout << "main(), value=" << value << endl;
+
+}
+void twentythree_doubleNum(int &refVar)
+{
+	refVar *= 3;
+}
+//prototype
+void twentyfour_getNum(int &);
+int twentyfour_doubleNum(int);
+void six_twentyfour()
+{
+	int value;
+	twentyfour_getNum(value);
+	value = twentyfour_doubleNum(value);
+	cout << "That value doubled is " << value << endl;
+}
+void twentyfour_getNum(int &num)
+{
+	cout << "Enter number: ";
+	cin >> num;
+}
+int twentyfour_doubleNum(int num)
+{
+	return num * 2;
+}
+//prototype
+void twentyfive_getNums(int&, int&);
+void twentyfive_orderNums(int&, int&);
+void six_twentyfive()
+{
+	int smallnum, bignum;
+	twentyfive_getNums(smallnum, bignum);
+	twentyfive_orderNums(smallnum, bignum);
+	cout << "The two input numbers ordered smallest to biggest are " 
+		<< smallnum << " and " << bignum << endl;
+}
+void twentyfive_getNums(int &input1, int &input2)
+{
+	cout << "Enter an integer: ";
+	cin >> input1;
+	cout << "Enter a second integer: ";
+	cin >> input2;
+}
+void twentyfive_orderNums(int &num1, int &num2)
+{
+	int temp;
+
+	if (num1 > num2) // If the numbers are out of order, swap them
+	{ 
+		temp = num1;
+		num1 = num2;
+		num2 = temp;
+	}
+}
+//prototype
+void twentysix_readFile(ifstream&);
+void six_twentysix()
+{
+	ifstream dataIn;
+
+	dataIn.open("weather.dat");
+	if(dataIn.fail()){
+		cout << "Error opening file.\n";
+	}else{
+		twentysix_readFile(dataIn);
+		dataIn.close();
+	}
+}
+void twentysix_readFile(ifstream &file)
+{
+	int temperature;
+	while (file >> temperature){
+		cout << temperature << " ";
+	}
+	cout << endl;
+}
+//prototype
+int twentyseven_square(int);
+double twentyseven_square(double);
+void six_twentyseven()
+{
+	double n1 = 923.283425;
+	int n2 = 43;
+	cout << twentyseven_square(n1) << endl;
+	cout << twentyseven_square(n2) << endl;
+}
+int twentyseven_square(int i)
+{
+	return i*i;
+}
+double twentyseven_square(double d)
+{
+	return d*d;
+}
 
 
 
@@ -271,5 +529,5 @@ void showFees(string memberType, double rate, int months)
 
 void chapter6()
 {
-	six_fourteen();
+	six_twentyseven();
 }

@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="dimensions.txt" />
+    <Text Include="weather.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
