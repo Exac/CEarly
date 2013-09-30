@@ -24,6 +24,12 @@
     <ClCompile Include="chapter2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="chapter4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chapter5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chapter3.h">
@@ -32,5 +38,14 @@
     <ClInclude Include="chapter2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="chapter4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chapter5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="dimensions.txt" />
   </ItemGroup>
 </Project>
