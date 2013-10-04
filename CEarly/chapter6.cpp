@@ -520,9 +520,74 @@ double twentyseven_square(double d)
 {
 	return d*d;
 }
+//prototype
+char twentyeight_getChoice();
+double twentyeight_calcWeeklyPay(int, double);
+double twentyeight_calcWeeklyPay(double);
+void six_twentyeight()
+{
+	char selection; // Menu selection
+	int worked; // Weekly hours worked
+	double rate, // Hourly pay rate
+		yearly; // Annual salary
 
+	// Set numeric output formatting
+	cout << fixed << showpoint << setprecision(2);
 
+	// Display the menu and get a selection
+	cout << "Do you want to calculate the weekly pay of\n";
+	cout << "(H) an hourly-wage employee, or \n";
+	cout << "(S) a salaried employee? ";
+	selection = getChoice();
 
+	// Process the menu selection
+	switch (selection)
+	{
+		// Hourly employee
+	case 'H' :
+	case 'h' : cout << "How many hours were worked? ";
+		cin >> worked;
+		cout << "What is the hourly pay rate? ";
+		cin >> rate;
+		cout << "The gross weekly pay is $";
+		cout << twentyeight_calcWeeklyPay(worked, rate) << endl;
+		break;
+		// Salaried employee
+	case 'S' :
+	case 's' : cout << "What is the annual salary? ";
+		cin >> yearly;
+		cout << "The gross weekly pay is $";
+		cout << twentyeight_calcWeeklyPay(yearly) << endl;
+	}
+}
+char twentyeight_getChoice()
+{
+	char letter;
+	cin >> letter;
+	// Validate the choice
+	while (letter != 'H' && letter != 'h'
+		&& letter != 'S' && letter != 's')
+	{
+		cout << "Enter H or S: ";
+		cin >> letter;
+	}
+	// Return the choice
+	return letter;
+}
+double twentyeight_calcWeeklyPay(int hours, double payRate)
+{
+	// don't pay employees enough so that they can afford lawyers to demand overtime.
+	return hours * payRate;
+}
+double twentyeight_calcWeeklyPay(double annSalary)
+{
+	return annSalary / 52.0;
+}
+//prototype
+void six_twentynine()
+{
+	exit();
+}
 
 
 
