@@ -586,7 +586,7 @@ double twentyeight_calcWeeklyPay(double annSalary)
 //prototype
 void six_twentynine()
 {
-	exit();
+	exit(0);
 }
 
 
