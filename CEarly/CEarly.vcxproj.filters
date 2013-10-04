@@ -53,6 +53,9 @@
     <ClInclude Include="chapter6.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="chapter7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="dimensions.txt" />

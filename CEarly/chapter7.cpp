@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <string>
 
 using namespace std;
 /******************************************************************
@@ -135,9 +136,139 @@ public:
 		return total;
 	}
 };
+/******************************************************************
+* 7-7
+******************************************************************/
+class Demo7
+{
+public:
+	Demo7();
+	~Demo7();
+};
+Demo7::Demo7(){
+	cout << "Demo7::Demo7()" << endl;
+}
+Demo7::~Demo7(){
+	cout << "Deconstructing Demo7::Demo7()";
+}
+/******************************************************************
+* 7-8
+******************************************************************/
+class SimpleStat8
+{
+private:
+	int largest;
+	int sum;
+	int count;
 
+	bool isNewLargest(int);
+public:
+	SimpleStat8();
+	bool addNumber(int);
+	double getAverage();
 
+	int getLargest()
+	{
+		return largest;
+	}
 
+	int getCount()
+	{
+		return count;
+	}
+};
+SimpleStat8::SimpleStat8()
+{
+	largest = sum = count = 0;
+}
+bool SimpleStat8::addNumber(int num)
+{
+	bool goodNum = true;
+	if(num >= 0){
+		sum += num;
+		count++;
+		if(isNewLargest(num)){
+			largest = num;
+		}
+	}else{
+		goodNum = false;
+	}
+	return goodNum;
+}
+bool SimpleStat8::isNewLargest(int num)
+{
+	if(num > largest){
+		return true;
+	}
+	return false;
+}
+double SimpleStat8::getAverage()
+{
+	if(count > 0){
+		return static_cast<double>(sum) / count;
+	}else{
+		return 0;
+	}
+}
+/******************************************************************
+* 7-9
+******************************************************************/
+class InventoryItem
+{
+private:
+	int partNum;
+	string description;
+	int onHand;
+	double price;
+public:
+	void storeInfo(int p, string d, int oH, double cost);
+
+	int getPartNum(){return partNum;}
+	string getDescription(){return description;}
+	int getOnHand(){return onHand;}
+	double getPrice(){return price;}
+};
+void InventoryItem::storeInfo(int p, string d, int oH, double cost)
+{
+	partNum = p;
+	description = d;
+	onHand = oH;
+	price = cost;
+}
+//proto
+void StoreValues(InventoryItem&);
+void StoreValues(InventoryItem);
+void storeValues(InventoryItem &item)
+{
+	int partNum; // Local variables to hold user input
+	string description;
+	int qty;
+	double price;
+
+	// Get the data from the user
+	cout << "Enter data for the new part number \n";
+	cout << "Part number: ";
+	cin >> partNum;
+	cout << "Description: ";
+	cin.get(); // Move past the '\n' left in the
+	// input buffer by the last input
+	getline(cin, description);
+	cout << "Quantity on hand: ";
+	cin >> qty;
+	cout << "Unit price: ";
+	cin >> price;
+
+	// Store the data in the InventoryItem object
+	item.storeInfo(partNum, description, qty, price);
+}
+void showValues(InventoryItem item)
+{
+	cout << fixed << showpoint << setprecision(2) << endl;;
+	cout << "Part Number : " << item.getPartNum() << endl;
+	cout << "Description : " << item.getDescription() << endl;
+	cout << "Units On Hand: " << item.getOnHand() << endl;
+	cout << "Price : $" << item.getPrice() << endl;
+}
 
 
 
@@ -152,6 +283,6 @@ public:
 ******************************************************************/
 void chapter7()
 {
-	Circle2 circle;
+	Demo7 demo7;
 
 }

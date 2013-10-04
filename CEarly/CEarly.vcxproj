@@ -90,6 +90,7 @@
     <ClInclude Include="chapter4.h" />
     <ClInclude Include="chapter5.h" />
     <ClInclude Include="chapter6.h" />
+    <ClInclude Include="chapter7.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dimensions.txt" />
