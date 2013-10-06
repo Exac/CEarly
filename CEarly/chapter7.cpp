@@ -347,16 +347,16 @@ void seven_twelve()
 }
 
 /******************************************************************
-* 7-13
+* 7-14
 ******************************************************************/
 struct PayRoll
 {
 	int empNumber;
 	string name;
 	double hours,
-		   payRate;
+		payRate;
 };
-void seven_thirteen()
+void seven_fourteen()
 {
 	PayRoll employee;
 	double grossPay;
@@ -371,8 +371,101 @@ void seven_thirteen()
 	cout << "pay: " << grossPay << endl;
 }
 /******************************************************************
-* 7-14
+* 7-15
 ******************************************************************/
+struct CostInfo
+{
+	double food,
+		medical,
+		licence,
+		misc;
+};
+struct PetInfo
+{
+	string name;
+	string type;
+	int age;
+
+	CostInfo cost;
+
+	PetInfo()
+	{
+		name = "unknown";
+		type = "unknown";
+		age = 0;
+		cost.food = cost.medical = cost.licence = cost.misc = 0;
+	}
+};
+void seven_fifteen()
+{
+	// Define a PetInfo structure variable called pet
+	PetInfo pet;
+
+	// Assign values to the pet member variables.
+	// Notice that cost.misc is not assigned a value,
+	// so it remains 0, as set by the constructor.
+	pet.name = "Sassy";
+	pet.type = "cat";
+	pet.age = 5;
+	pet.cost.food = 300.00;
+	pet.cost.medical = 200.00;
+	pet.cost.licence = 7.00;
+
+	// Display the total annual costs for the pet
+	cout << fixed << showpoint << setprecision(2);
+	cout << "Annual costs for my " << pet.age << "-year-old "
+		<< pet.type << " " << pet.name << " are $"
+		<< (pet.cost.food + pet.cost.medical +
+		pet.cost.licence + pet.cost.misc) << endl;
+}
+/******************************************************************
+* 7-16
+******************************************************************/
+struct InvItem
+{
+	int partNum;
+	string description;
+	int onHand;
+	double price;
+};
+void getItemData(InvItem&);
+void showItem(const InvItem&);
+void seven_sixteen()
+{
+	InvItem part;
+	getItemData(part);
+	showItem(part);
+}
+void getItemData(InvItem&)
+{
+	cout << "Enter the part number: ";
+	cin >> item.partNum;
+	cout << "Enter the part description: ";
+	cin.get(); // Move past the '\n' left in the
+	// input buffer by the last input.
+	cin.ignore();
+	item.description = "description default";
+	cout << "Enter the quantity on hand: ";
+	cin >> item.onHand;
+	cout << "Enter the unit price: ";
+	cin >> item.price;
+}
+void showItem(const InvItem&)
+{
+	cout << fixed << showpoint << setprecision(2) << endl;;
+	cout << "Part Number : " << item.partNum << endl;
+	cout << "Description : " << item.description << endl;
+	cout << "Units On Hand: " << item.onHand << endl;
+	cout << "Price : $" << item.price << endl;
+}
+/******************************************************************
+* 7-17
+******************************************************************/
+
+
+
+
+
 
 
 
@@ -383,6 +476,6 @@ void seven_thirteen()
 ******************************************************************/
 void chapter7()
 {
-	seven_thirteen();
+	seven_fifteen();
 
 }
