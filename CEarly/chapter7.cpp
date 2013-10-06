@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cmath>
 #include <string>
+#include "Rectangle.h"
 
 using namespace std;
 /******************************************************************
@@ -45,41 +46,42 @@ double Circle2::getArea()
 /******************************************************************
 * 7-3
 ******************************************************************/
+/*
 class Rectangle
 {
 private:
-	double length;
-	double width;
+double length;
+double width;
 
 public :
-	void setLength(double);
-	void setWidth(double);
-	double getLength();
-	double getWidth();
-	double getArea();
+void setLength(double);
+void setWidth(double);
+double getLength();
+double getWidth();
+double getArea();
 };
 void Rectangle::setLength(double len){
-	if(len >= 0){
-		length = len;
-	}else{
-		length = 1.0;
-	}
+if(len >= 0){
+length = len;
+}else{
+length = 1.0;
+}
 }
 void Rectangle::setWidth(double w){
-	if(w >= 0){
-		width = w;
-	}else{
-		width = 1.0;
-	}
+if(w >= 0){
+width = w;
+}else{
+width = 1.0;
+}
 }
 double Rectangle::getLength(){
-	return length;
+return length;
 }
 double Rectangle::getWidth(){
-	return width;
+return width;
 }
 double Rectangle::getArea(){
-	return length * width;
+return length * width;
 }
 /******************************************************************
 * 7-4
@@ -269,10 +271,108 @@ void showValues(InventoryItem item)
 	cout << "Units On Hand: " << item.getOnHand() << endl;
 	cout << "Price : $" << item.getPrice() << endl;
 }
+/******************************************************************
+* 7-10
+******************************************************************/
+//same as above but just return the item...
+InventoryItem createItem()
+{
+	InventoryItem tempItem;
+	int partNum;
+	string description;
+	int qty;
+	double price;
+	// Get the data from the user
+	cout << "Enter data for the new part number \n";
+	cout << "Part number: ";
+	cin >> partNum;
+	cout << "Description: ";
+	cin.get(); // Move past the '\n' left in the
+	// input buffer by the last input
+	getline(cin, description);
+	cout << "Quantity on hand: ";
+	cin >> qty;
+	cout << "Unit price: ";
+	cin >> price;
 
+	// Store the data in the InventoryItem object and return it
+	tempItem.storeInfo(partNum, description, qty, price);
+	return tempItem;
+}
+/******************************************************************
+* 7-11
+******************************************************************/
+class Carpet
+{
+private:
+	double pricePerSqYd;
+	Rectangle size;
+public:
+	void setPricePerSqYd(double p){
+		pricePerSqYd = p;
+	}
+	void setDimensions(double len, double wid){
+		size.setLength(len/3);
+		size.setWidth(wid/3);
+	}
+	double getTotalPrice(){
+		return (size.getArea() * pricePerSqYd);
+	}
+};
+/******************************************************************
+* 7-12
+******************************************************************/
+void seven_twelve()
+{
+	Rectangle box;
+	double boxLength, boxWidth;
+	//Get box length and width
+	cout << "This program will calculate the area of a rectangle.\n";
+	cout << "What is the length? ";
+	cin >> boxLength;
+	cout << "What is the width? ";
+	cin >> boxWidth;
 
+	if (!box.setLength(boxLength)) // Store the length
+		cout << "Invalid box length entered.\n";
+	else if (!box.setWidth(boxWidth)) // Store the width
+		cout << "Invalid box width entered.\n";
+	else // Both values were valid
+	{
+		cout << "\nHere is the rectangle's data:\n";
+		cout << "Length: " << box.getLength() << endl;
+		cout << "Width : " << box.getWidth() << endl;
+		cout << "Area : " << box.getArea() << endl;
+	}
+}
 
+/******************************************************************
+* 7-13
+******************************************************************/
+struct PayRoll
+{
+	int empNumber;
+	string name;
+	double hours,
+		   payRate;
+};
+void seven_thirteen()
+{
+	PayRoll employee;
+	double grossPay;
 
+	employee.empNumber = 27;
+	employee.name = "Exact";
+	employee.hours = 79.25;
+	employee.payRate = 10.25;
+
+	grossPay = employee.hours * employee.payRate;
+
+	cout << "pay: " << grossPay << endl;
+}
+/******************************************************************
+* 7-14
+******************************************************************/
 
 
 
@@ -283,6 +383,6 @@ void showValues(InventoryItem item)
 ******************************************************************/
 void chapter7()
 {
-	Demo7 demo7;
+	seven_thirteen();
 
 }
