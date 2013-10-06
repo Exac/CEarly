@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "chapter8.h"
 #include "chapter7.h"
 #include "chapter6.h"
 #include "chapter5.h"
@@ -15,7 +16,8 @@ int main()
 	//chapter4();
 	//chapter5();
 	//chapter6();
-	chapter7();
+	//chapter7();
+	chapter8();
 	cin.ignore();
 	cin.get();
 	return 0;

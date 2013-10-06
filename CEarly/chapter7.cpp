@@ -436,7 +436,7 @@ void seven_sixteen()
 	getItemData(part);
 	showItem(part);
 }
-void getItemData(InvItem&)
+void getItemData(InvItem& item)
 {
 	cout << "Enter the part number: ";
 	cin >> item.partNum;
@@ -450,8 +450,9 @@ void getItemData(InvItem&)
 	cout << "Enter the unit price: ";
 	cin >> item.price;
 }
-void showItem(const InvItem&)
+void showItem(const InvItem& item)
 {
+
 	cout << fixed << showpoint << setprecision(2) << endl;;
 	cout << "Part Number : " << item.partNum << endl;
 	cout << "Description : " << item.description << endl;
@@ -461,7 +462,11 @@ void showItem(const InvItem&)
 /******************************************************************
 * 7-17
 ******************************************************************/
-
+union PaySource
+{
+	short hours;
+	float sales;
+};
 
 
 
@@ -476,6 +481,6 @@ void showItem(const InvItem&)
 ******************************************************************/
 void chapter7()
 {
-	seven_fifteen();
+	seven_fourteen();
 
 }
