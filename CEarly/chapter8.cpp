@@ -1,5 +1,8 @@
+#include <vector>
 #include <iostream>
 #include <fstream>
+#include <ctime>
+#include <cctype>
 #include <iomanip>
 #include <cmath>
 #include <string>
@@ -128,12 +131,250 @@ void e_nine()
 }
 void e_ten()
 {
+	const int NUM_OFFICES = 12;
+	ifstream dataIn;
+	int office; // Loop counter
+	double sales[NUM_OFFICES], // Array to hold the sales data
+		totalSales = 0.0, // Accumulator initialized to zero
+		averageSales,
+		highestSales,
+		lowestSales;
 
+	// Open the data file
+	dataIn.open("sales.dat");
+	if (!dataIn)
+		cout << "Error opening data file.\n";
+	else
+	{ // Fill the array with data from the file
+		for (office = 0; office < NUM_OFFICES; office++)
+			dataIn >> sales[office];
+		dataIn.close();
+
+		// Sum all the array elements
+		for (office = 0; office < NUM_OFFICES; office++)
+			totalSales += sales[office];
+
+		// Calculate average sales
+		averageSales = totalSales / NUM_OFFICES;
+
+		// Find highest and lowest sales amounts
+		highestSales = lowestSales = sales[0];
+		for (office = 1; office < NUM_OFFICES; office++)
+		{
+			if (sales[office] > highestSales)
+				highestSales = sales[office];
+			else if (sales[office] < lowestSales)
+				lowestSales = sales[office];
+		}
+		// Display results
+		cout << fixed << showpoint << setprecision(2);
+		cout << "Total sales $" << setw(9) << totalSales << endl;
+		cout << "Average sales $" << setw(9) << averageSales << endl;
+		cout << "Highest sales $" << setw(9) << highestSales << endl;
+		cout << "Lowest sales $" << setw(9) << lowestSales << endl;
+	}
 }
+void e_twelve()
+{
+	char ch;
+	int vowelCount = 0;
+	string sentance;
 
+	sentance = "I hate cake and any sort of disgustingly fatty food...";
 
+	for(int pos = 0; pos < static_cast<int>(sentance.length()); pos++){
+		ch = toupper(sentance[pos]);
+		switch(ch){
+		case 'A':
+		case 'E':
+		case 'I':
+		case 'O':
+		case 'U':
+			vowelCount++;
+		}
+	}
+	cout << "Vowels: " << vowelCount << " in sentance: " << sentance;
+}
+void e_thirteen()
+{
+	const int NUM_EMPS = 5;
+	int index;
+	int hours[NUM_EMPS];
+	double payRate[NUM_EMPS];
+	double grossPay;
+	for (index = 0; index < NUM_EMPS; index++)
+	{
+		cout << "Hours worked by employee #" << (index + 1) << ": ";
+		cin >> hours[index];
+		cout << "Hourly pay rate for employee #" << (index + 1) << ": ";
+		cin >> payRate[index];
+	}
+	// Display the data
+	cout << "\nHere is the gross pay for each employee:\n";
+	cout << fixed << showpoint << setprecision(2);
+	for (index = 0; index < NUM_EMPS; index++)
+	{
+		grossPay = hours[index] * payRate[index];
+		cout << "Employee #" << (index + 1);
+		cout << ": $" << setw(7) << grossPay << endl;
+	}
+}
+void showValue(int);
+void e_fourteen()
+{
+	const int SIZE = 8;
+	int collection[SIZE] = {15,10,51,2337,48,54,45,90};
+	for(int index = 0; index < SIZE; index++){
+		showValue(collection[index]);
+		cout << endl;
+	}
+}
+void showValue(int num)
+{
+	cout << num << " ";
+}
+void showValues(int intArray[], int size);
+void e_fifteen()
+{
+	const int S = 8;
+	int c[S] = {5,10,90,28,58,83,84,95};
+	showValues(c, S);
+}
+void showValues(int intArray[], int size)
+{
+	for(int i = 0; i < size; i++)
+	{
+		cout << intArray[i] << " ";
+	}
+	cout << endl;
+}
+void e_sixteen()
+{
+	const int S1 = 8;
+	const int S2 = 5;
+	int s1[] = {5,10,15,20,25,30,35,40};
+	int s2[] = {2,4,6,8,10};
+	showValues(s1, S1);
+	showValues(s2, S2);
+}
+typedef int arrayType[];
+void doubleArray(arrayType, int);
+void showValues17(arrayType, int);
+void e_seventeen()
+{
+	const int S = 7;
+	arrayType set = {1,2,3,4,5,6,7};
+	showValues17(set, S);
+	doubleArray(set, S);
+	cout << "\n after calling doubleArray(), the values are:\n";
+	showValues17(set, S);
+}
+void showValues17(arrayType nums, int size)
+{
+	for(int i = 0; i < size; i++)
+	{
+		cout << nums[i] << " " ;
+	}
+	cout << endl;
+}
+void doubleArray(arrayType nums, int size)
+{
+	for(int i = 0; i < size; i++)
+	{
+		nums[i] *= 2;
+	}
+}
+//eighteen
+double sumArray  (double[], int);
+double getHighest(double[], int);
+double getLowest (double[], int);
+void e_eighteen()
+{
+	const int SIZE = 10;
+	double arr[SIZE] = {27,92,2,14,93,9,17,6,96,27};
+	cout << "highest: " << getHighest(arr, SIZE) << endl;
+	cout << "lowest: " << getLowest(arr, SIZE) << endl;
+	cout << "sum: " << sumArray(arr, SIZE) << endl;
+}
+double sumArray(double a[], int size){
+	double sum = 0;
+	for(int i = 0; i < size; i++){
+		sum += a[i];
+	}
+	return sum;
+}
+double getHighest(double a[], int size){
+	double highest = a[0];
+	for(int i = 0;i < size; ++i){
+		if(a[i]>highest){
+			highest = a[i];
+		}
+	}
+	return highest;
+}
+double getLowest(double a[], int size){
+	double lowest = a[0];
+	for(int i = 0;i < size; ++i){
+		if(a[i]<lowest){
+			lowest = a[i];
+		}
+	}
+	return lowest;
+}
+void e_ninteen()
+{
+	const int LEN = 5;
+	const int LEN2 = 12;
+	double tdr[LEN][LEN2];
+	for(int a = 0; a < LEN; a++){
+		for(int b = 0; b < LEN2; b++){
+			tdr[a][b] =  (double)time(0);
+		}
+	}
+	for(int i = 0; i < LEN; i++){
+		for(int j = 0; j < LEN2; j++){
+			cout << tdr[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+void e_22()
+{
+	const int NUM_EMPS = 5;
+	vector<int> hours(NUM_EMPS);
+	vector<double> payRate(NUM_EMPS);
+	double grossPay;
+	int index;
+
+	cout << "Enter the hours worked and hourly pay rates of " << NUM_EMPS << " employees. \n";
+	for (index = 0; index < NUM_EMPS; index++)
+	{
+		cout << "Hours worked by employee #" << (index + 1) << ": ";
+		cin >> hours[index];
+		cout << "Hourly pay rate for employee #" << (index + 1) << ": ";
+		cin >> payRate[index];
+	}
+	// Display each employee’s gross pay
+	cout << "\nHere is the gross pay for each employee:\n";
+	cout << fixed << showpoint << setprecision(2);
+	for (index = 0; index < NUM_EMPS; index++)
+	{
+		grossPay = hours[index] * payRate[index];
+		cout << "Employee #" << (index + 1);
+		cout << ": $" << setw(7) << grossPay << endl;
+	}
+}
+void e_pointertest(){
+	double t1 = 100.0;
+	double t2;
+	//t2 = &t1;
+	cout << t2 << endl;
+	t2 += 333;
+	cout << t2 << endl;
+	cout << "t1:" << t1 << endl;
+}
 
 void chapter8()
 {
-	e_six();
+	e_pointertest();
 }
